@@ -10,19 +10,17 @@ import UIKit
 
 class AdCollectionViewCell: UICollectionViewCell {
     
-    var scrollView: UIScrollView!
+    var scrollView: AdScrollView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        scrollView = UIScrollView(frame: frame)
+        scrollView = AdScrollView(frame: frame)
         scrollView.backgroundColor = UIColor.gray
         self.addSubview(scrollView)
         
-        
-//        scrollView.pageControl.pageIndicatorTintColor = UIColor.whiteColor()
-//        scrollView.pageControl.currentPageIndicatorTintColor = Constants.AssistColor1
-//        scrollView.addPageControl()
-        
+        scrollView.pageControl.pageIndicatorTintColor = UIColor.white
+        scrollView.pageControl.currentPageIndicatorTintColor = Constants.AssistColor1
+        scrollView.addPageControl()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,7 +40,7 @@ class AdCollectionViewCell: UICollectionViewCell {
         //广告页宽高比
         //        static let Scale:CGFloat = 19/8
         static let CellWidth: CGFloat = Constants.ScreenRect.width
-        static let CellHeight: CGFloat = 303 * Constants.Scale
+        static let CellHeight: CGFloat = Constants.ScreenRect.width/2.5
         //        static let AdPageControlWidth: CGFloat = CellWidth/5
         //        static let AdPageControlHeight: CGFloat = 10
         //        static let AdPageNumber: Int = 5

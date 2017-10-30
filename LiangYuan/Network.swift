@@ -193,7 +193,7 @@ struct Network {
     static let PreferFileName = "mutrain"
     static let PageSize = 20
     // 测试
-    static let Domain = "http://120.24.79.127:8081"
+    static let Domain = "http://120.78.62.199/elearn/v1/api/"
     //    // 正式
     //    static let Domain = "http://edu.youths.org.cn"
     // 登陆
