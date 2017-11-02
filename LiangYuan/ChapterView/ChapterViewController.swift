@@ -20,6 +20,7 @@ class ChapterViewController: UIViewController {
         }
     }
     var isFirstLaunch = true
+    var isError = false
     // MARK:- UI Elements
     var playerItem:AVPlayerItem!
     var avplayer:AVPlayer!
@@ -61,7 +62,11 @@ class ChapterViewController: UIViewController {
     func initPlayerView() {
 
         // 检测连接是否存在 不存在报错
-        guard let url = URL(string: chapterInfo?.mediaUrl ?? "") else { fatalError("链接错误") }
+        guard let url = URL(string: chapterInfo?.mediaUrl ?? "") else {
+            showError(reason: "音频链接错误")
+            self.isError = true
+            return
+        }
 //        guard let url = URL(string: "http://bos.nj.bpc.baidu.com/tieba-smallvideo/11772_3c435014fb2dd9a5fd56a57cc369f6a0.mp4") else { fatalError("链接错误") }
         playerItem = AVPlayerItem(url: url) // 创建视频资源
         // 监听缓冲进度改变
@@ -83,6 +88,7 @@ class ChapterViewController: UIViewController {
 
 
     }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let playerItem = object as?AVPlayerItem else { return }
         if keyPath == "loadedTimeRanges" {
@@ -98,9 +104,7 @@ class ChapterViewController: UIViewController {
                 // 只有在这个状态下才能播放
                 self.avplayer.play()
             }else {
-                self.playerView.delegate = nil
-                let alertView = UIAlertView(title: "音频加载异常", message: "", delegate: self, cancelButtonTitle: "取消")
-                alertView.show()
+                showError(reason: "音频加载异常")
             }
         }
     }
@@ -127,7 +131,7 @@ class ChapterViewController: UIViewController {
     }
     
     deinit{
-        if !self.isFirstLaunch {
+        if !self.isFirstLaunch && !self.isError {
             playerItem.removeObserver(self, forKeyPath: "loadedTimeRanges")
             playerItem.removeObserver(self, forKeyPath: "status")
         }
@@ -152,6 +156,11 @@ class ChapterViewController: UIViewController {
         let result = startSeconds + durationSecound
         return result
     }
+    func showError(reason: String) {
+        self.playerView.delegate = nil
+        let alertView = UIAlertView(title: reason, message: "", delegate: self, cancelButtonTitle: "取消")
+        alertView.show()
+    }
     // MARK: - 从网络下载数据
     func initData() {
         guard let code = chapterInfo?.chapterCode else {return}
@@ -164,7 +173,6 @@ class ChapterViewController: UIViewController {
             let json = JSON(JSONData)
             let chapter = ChapterInfo(chapterJSON: json["result"])
             self.chapterInfo = chapter
-//            self.initPlayerView()
             self.webView.loadHTMLString(chapter.content ?? "", baseURL: nil)
         }
     }

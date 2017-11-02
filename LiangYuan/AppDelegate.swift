@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIBarButtonItem.appearance().tintColor = UIColor.black
         
-        UIButton.appearance().tintColor = UIColor.white
+        UIButton.appearance().tintColor = UIColor.black
         return true
     }
 

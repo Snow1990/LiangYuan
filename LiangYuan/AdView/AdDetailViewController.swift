@@ -19,7 +19,7 @@ class AdDetailViewController: UIViewController {
 //        if id == 1 {
 //        }
         initNav()
-        let url = URL(string: "https://www.diaochapai.com/survey2622054")
+        let url = URL(string: "https://www.lediaocha.com/pc/s/ivduey")
         let request = URLRequest(url: url!)
         self.webView.loadRequest(request)
         

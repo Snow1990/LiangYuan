@@ -38,9 +38,8 @@ class CourseViewController: BaseCollectionViewController {
     
     func initNav() {
         
-        let teacher = "讲师：" + (courseInfo?.teacher ?? "")
+        let teacher = courseInfo?.teacher
         let rightBtn = UIBarButtonItem(title: teacher, style: .plain, target: nil, action: nil)
-        
         self.navigationItem.rightBarButtonItem = rightBtn
         
         let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 30.0))
@@ -130,10 +129,10 @@ class CourseViewController: BaseCollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let attibute = [NSAttributedStringKey.font : Constants.Font3]
-        let height = CourseCollectionReusableHeader.autoLabelHeight(with: courseInfo?.courseDesc, labelWidth: Constants.ScreenRect.width - 10, attributes: attibute)
+//        let attibute = [NSAttributedStringKey.font : Constants.Font3]
+//        let height = CourseCollectionReusableHeader.autoLabelHeight(with: courseInfo?.courseDesc, labelWidth: Constants.ScreenRect.width - 10, attributes: attibute)
       
-        return CGSize(width: Constants.ScreenRect.width, height: height + 10)
+        return CGSize(width: Constants.ScreenRect.width, height: 0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
