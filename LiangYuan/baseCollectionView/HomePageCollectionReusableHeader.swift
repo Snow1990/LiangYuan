@@ -8,11 +8,13 @@
 
 import UIKit
 protocol SNHomePageHeaderDelegate: NSObjectProtocol {
+    func snClickButton(headerView: HomePageCollectionReusableHeader, button: UIButton)
     func snClickControl(headerView: HomePageCollectionReusableHeader, control: UIControl)
 
 }
 class HomePageCollectionReusableHeader: UICollectionReusableView {
     var section: Int?
+    var btn = UIButton()
     var label = UILabel()
     var moreLabel = UILabel()
     var bgControl = UIControl()
@@ -22,11 +24,22 @@ class HomePageCollectionReusableHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        btn.frame = CGRect(
+            x: 0 * Constants.Scale,
+            y: 22 * Constants.Scale,
+            width: 200 * Constants.Scale,
+            height: 36 * Constants.Scale)
+        btn.setTitle("本科", for: UIControlState.normal)
+        btn.setTitleColor(Constants.MainColor, for: UIControlState.normal)
+        btn.titleLabel?.textAlignment = NSTextAlignment.left
+        btn.addTarget(self, action: #selector(clickButton(sender:)), for: UIControlEvents.touchUpInside)
+
+        self.addSubview(btn)
         // 标题
         label.frame = CGRect(
-            x: 110 * Constants.Scale,
+            x: 200 * Constants.Scale,
             y: 22 * Constants.Scale,
-            width: 500 * Constants.Scale,
+            width: 320 * Constants.Scale,
             height: 36 * Constants.Scale)
         label.font = Constants.Font3
         label.textColor = Constants.MainColor
@@ -46,13 +59,16 @@ class HomePageCollectionReusableHeader: UICollectionReusableView {
         self.addSubview(moreLabel)
         
         bgControl.frame = CGRect(
-            x: 110 * Constants.Scale,
+            x: 200 * Constants.Scale,
             y: 0 * Constants.Scale,
             width: 610 * Constants.Scale,
             height: 80 * Constants.Scale)
 //        bgControl.backgroundColor = .blue
         bgControl.addTarget(self, action: #selector(clickControl(sender:)), for: UIControlEvents.touchUpInside)
         self.addSubview(bgControl)
+    }
+    @objc func clickButton(sender: UIButton) {
+        self.delegate?.snClickButton(headerView: self, button: sender)
     }
     @objc func clickControl(sender: UIControl) {
         self.delegate?.snClickControl(headerView: self, control: sender)

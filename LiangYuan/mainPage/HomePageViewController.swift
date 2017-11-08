@@ -136,6 +136,9 @@ class HomePageViewController: BaseCollectionViewController {
             
             headerView.section = indexPath.section-1
             headerView.label.text = courseInfoArray[indexPath.section-1].courseName
+            if let subject = courseInfoArray[indexPath.section-1].subjectName {
+                headerView.btn.setTitle(subject, for: UIControlState.normal)
+            }
             headerView.delegate = self
             headerView.backgroundColor = UIColor.clear
             return headerView
@@ -208,7 +211,22 @@ class HomePageViewController: BaseCollectionViewController {
     }
     
     
-
+    override func snClickButton(headerView: HomePageCollectionReusableHeader, button: UIButton) {
+        guard let section = headerView.section else {return}
+        guard let subjectCoide = courseInfoArray[section].subjectCode else {return}
+        switch subjectCoide {
+        case 1:
+            self.tabBarController?.selectedIndex = 1
+        case 2:
+            self.tabBarController?.selectedIndex = 2
+        case 3:
+            self.tabBarController?.selectedIndex = 3
+        case 4:
+            self.tabBarController?.selectedIndex = 4
+        default:
+            return
+        }
+    }
 }
 extension HomePageViewController: AdScrollViewDelegate {
     func selectCourse(index: Int) {
@@ -216,4 +234,6 @@ extension HomePageViewController: AdScrollViewDelegate {
             performSegue(withIdentifier: Constants.ToAdDetailSegue, sender: index)
         }
     }
+    
 }
+

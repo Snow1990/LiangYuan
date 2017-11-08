@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 
-class BaseCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+class BaseCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout,SNHomePageHeaderDelegate {
 
     var courseInfoArray = [CourseInfo]() {
         didSet{
@@ -98,6 +98,7 @@ class BaseCollectionViewController: UICollectionViewController,UICollectionViewD
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HomePageCollectionReusableHeader.reuseIdentifier(), for: indexPath) as! HomePageCollectionReusableHeader
             headerView.section = indexPath.section
             headerView.label.text = courseInfoArray[indexPath.section].courseName
+            headerView.btn.setTitle("", for: UIControlState.normal)
             headerView.delegate = self
             headerView.backgroundColor = UIColor.clear
             return headerView
@@ -143,13 +144,15 @@ class BaseCollectionViewController: UICollectionViewController,UICollectionViewD
         }
     }
     
-    
-}
-extension BaseCollectionViewController: SNHomePageHeaderDelegate {
+    // SNHomePageHeaderDelegate
     func snClickControl(headerView: HomePageCollectionReusableHeader, control: UIControl) {
         
         guard let section = headerView.section else {return}
         let course = courseInfoArray[section]
         performSegue(withIdentifier: Constants.ToCourseDetailSegue, sender: course.courseCode)
     }
+    func snClickButton(headerView: HomePageCollectionReusableHeader, button: UIButton) {
+        
+    }
 }
+

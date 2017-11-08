@@ -85,8 +85,8 @@ class ChapterViewController: UIViewController {
         // 位置放在最底下
         self.playerView.layer.insertSublayer(playerLayer, at: 0)
         timer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-
-
+        
+        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

@@ -34,6 +34,9 @@
 		87DD47F61F904991005592B0 /* SnowSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD47F51F904991005592B0 /* SnowSideMenu.swift */; };
 		87DD47F81F905467005592B0 /* QihangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD47F71F905467005592B0 /* QihangViewController.swift */; };
 		87DD47FA1F905501005592B0 /* QihangSideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD47F91F905501005592B0 /* QihangSideMenuTableViewController.swift */; };
+		87EE83241FB2B183006358D0 /* ZhuanquViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE83231FB2B183006358D0 /* ZhuanquViewController.swift */; };
+		87EE83261FB2B7EE006358D0 /* AlbumsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE83251FB2B7EE006358D0 /* AlbumsInfo.swift */; };
+		87EE83281FB2F22D006358D0 /* AlbumsSubjectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE83271FB2F22D006358D0 /* AlbumsSubjectInfo.swift */; };
 		87EEA8391F960B3A003638C2 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEA8381F960B3A003638C2 /* HomePageViewController.swift */; };
 		87EEA83B1F9619CF003638C2 /* CourseCollectionReusableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEA83A1F9619CF003638C2 /* CourseCollectionReusableHeader.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +72,9 @@
 		87DD47F51F904991005592B0 /* SnowSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowSideMenu.swift; sourceTree = "<group>"; };
 		87DD47F71F905467005592B0 /* QihangViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QihangViewController.swift; sourceTree = "<group>"; };
 		87DD47F91F905501005592B0 /* QihangSideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QihangSideMenuTableViewController.swift; sourceTree = "<group>"; };
+		87EE83231FB2B183006358D0 /* ZhuanquViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZhuanquViewController.swift; sourceTree = "<group>"; };
+		87EE83251FB2B7EE006358D0 /* AlbumsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsInfo.swift; sourceTree = "<group>"; };
+		87EE83271FB2F22D006358D0 /* AlbumsSubjectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsSubjectInfo.swift; sourceTree = "<group>"; };
 		87EEA8381F960B3A003638C2 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		87EEA83A1F9619CF003638C2 /* CourseCollectionReusableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionReusableHeader.swift; sourceTree = "<group>"; };
 		BDC895271AA659B0991308E2 /* Pods_LiangYuan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiangYuan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +111,7 @@
 				8745E4F31F95A03F004E5CDA /* BenkeViewController.swift */,
 				870EAF7E1F96017E00873304 /* JinshenViewController.swift */,
 				870EAF801F96018900873304 /* TejiViewController.swift */,
+				87EE83231FB2B183006358D0 /* ZhuanquViewController.swift */,
 			);
 			path = mainPage;
 			sourceTree = "<group>";
@@ -165,6 +172,8 @@
 				879418401F7B35000083BD34 /* CourseInfo.swift */,
 				87DD47EB1F8B0E46005592B0 /* ChapterInfo.swift */,
 				872221511F96EF1C00D31F14 /* NewsInfo.swift */,
+				87EE83251FB2B7EE006358D0 /* AlbumsInfo.swift */,
+				87EE83271FB2F22D006358D0 /* AlbumsSubjectInfo.swift */,
 				879418421F7B3FB10083BD34 /* Constants.swift */,
 			);
 			name = model;
@@ -372,6 +381,7 @@
 				870EAF7F1F96017E00873304 /* JinshenViewController.swift in Sources */,
 				87DD47F81F905467005592B0 /* QihangViewController.swift in Sources */,
 				87B98AF91F6F76E50019ED92 /* AppDelegate.swift in Sources */,
+				87EE83281FB2F22D006358D0 /* AlbumsSubjectInfo.swift in Sources */,
 				878F6E2F1F97241C00E6D4A2 /* ChapterViewController.swift in Sources */,
 				879418411F7B35000083BD34 /* CourseInfo.swift in Sources */,
 				879418451F7B5C360083BD34 /* AdCollectionViewCell.swift in Sources */,
@@ -379,8 +389,10 @@
 				87510B5D1F9DD20C00ABFBD0 /* SNPlayerView.swift in Sources */,
 				87DD47EC1F8B0E46005592B0 /* ChapterInfo.swift in Sources */,
 				872221521F96EF1C00D31F14 /* NewsInfo.swift in Sources */,
+				87EE83241FB2B183006358D0 /* ZhuanquViewController.swift in Sources */,
 				8745E4F81F95A897004E5CDA /* HomePageCollectionReusableHeader.swift in Sources */,
 				87DD47EE1F8DE9C5005592B0 /* Network.swift in Sources */,
+				87EE83261FB2B7EE006358D0 /* AlbumsInfo.swift in Sources */,
 				87DD47FA1F905501005592B0 /* QihangSideMenuTableViewController.swift in Sources */,
 				879418431F7B3FB10083BD34 /* Constants.swift in Sources */,
 				87DD47F41F8F1E2B005592B0 /* AdScrollView.swift in Sources */,
@@ -540,6 +552,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = LiangYuan_Development;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -560,6 +573,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = LiangYuan_Development;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
