@@ -25,7 +25,7 @@ class SNPlayerView: UIView {
     }
     var slider:UISlider!
     var sliding = false
-    var playing = false
+//    var playing = false
     var progressView:UIProgressView!
     var playBtn:UIButton!
     weak var delegate:SNPlayerViewDelegate?
@@ -61,7 +61,7 @@ class SNPlayerView: UIView {
         slider.setThumbImage(UIImage(named:"slider_thumb"), for: UIControlState.normal)
         // 按下的时候
         slider.addTarget(self, action: #selector(sliderTouchDown(slider:)), for: UIControlEvents.touchDown)
-        
+        slider.isEnabled = false
         // 弹起的时候
         slider.addTarget(self, action: #selector(sliderTouchUpOut(slider:)), for: UIControlEvents.touchUpOutside)
         slider.addTarget(self, action: #selector(sliderTouchUpOut(slider:)), for: UIControlEvents.touchUpInside)
@@ -106,16 +106,6 @@ class SNPlayerView: UIView {
         delegate?.snplayer(playerView: self, sliderTouchUpOut: slider)
     }
     @objc func playAndPause(btn:UIButton){
-        let tmp = !playing
-        playing = tmp // 改变状态
-        
-        // 根据状态设定图片
-        if playing {
-            playBtn.setImage(UIImage(named: "player_pause"), for: UIControlState.normal)
-        }else{
-            playBtn.setImage(UIImage(named: "player_play"), for: UIControlState.normal)
-        }
-        
         // 代理方法
         delegate?.snplayer(playerView: self, playAndPause: btn)
     }

@@ -145,5 +145,31 @@ class ZhuanquViewController: BaseCollectionViewController {
             return footView
         }
     }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+//        if let destination = segue.destination as? CourseViewController, let id = sender as? Int, segue.identifier == Constants.ToCourseDetailSegue {
+//            destination.courseInfo = CourseInfo(courseCode: id)
+//            destination.hidesBottomBarWhenPushed = true
+//        }
+        if let destination = segue.destination as? ZhuanquDetailViewController, let id = sender as? Int, segue.identifier == Constants.ToAlbumsDetailSegue {
+            destination.albumsInfo = AlbumsInfo(albumCode: id)
+            destination.hidesBottomBarWhenPushed = true
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let albums = albumsSubjectInfoArray[indexPath.section].albumses[indexPath.row]
+        performSegue(withIdentifier: Constants.ToAlbumsDetailSegue, sender: albums.albumCode)
+    }
+    override func snClickControl(headerView: HomePageCollectionReusableHeader, control: UIControl) {
+        
+//        guard let section = headerView.section else {return}
+//        let course = courseInfoArray[section]
+//        performSegue(withIdentifier: Constants.ToCourseDetailSegue, sender: course.courseCode)
+    }
 
 }

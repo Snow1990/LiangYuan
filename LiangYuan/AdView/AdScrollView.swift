@@ -45,7 +45,7 @@ class AdScrollView: UIScrollView, UIScrollViewDelegate {
     //    var imageDictionary = [String: UIImage]()
     
     //记录中间图片的下标
-    var currentImageNum = 1
+    var currentImageNum = 0
     let ChangeImageTime = 2.0
     
     
@@ -148,31 +148,15 @@ class AdScrollView: UIScrollView, UIScrollViewDelegate {
         
         if newsInfoArray.count >= 3{
             let leftUrl = newsInfoArray[getForward(currentImageNum)].newsImgUrl
-            
             leftImageView.sd_setImage(with: URL(string: leftUrl ?? ""))
             let centerUrl = newsInfoArray[currentImageNum].newsImgUrl
             centerImageView.sd_setImage(with: URL(string: centerUrl ?? ""))
             let rightUrl = newsInfoArray[getNext(currentImageNum)].newsImgUrl
             rightImageView.sd_setImage(with: URL(string: rightUrl ?? ""))
-//            leftImageView.image = getImage(newsInfoArray[getForward(currentImageNum)].newsImgUrl)
-//            centerImageView.image = getImage(newsInfoArray[currentImageNum].newsImgUrl)
-//            rightImageView.image = getImage(newsInfoArray[getNext(currentImageNum)].newsImgUrl)
-            
+   
         }
     }
-//    func getImage(_ imagePath: String?) -> UIImage? {
-//
-//        if let imagePath = imagePath {
-//
-//            return UIImage(named: imagePath)
-////            let urlString = Network.Router.Image(imagePath: imagePath).URLRequest.URLString
-////            if let image = CoreDataOperate.fetchImageData(urlString) {
-////                return image
-////            }
-//        }
-//
-//        return nil
-//    }
+
     
     @objc func selectCourse() {
         self.adScrollViewDelegate?.selectCourse(index: currentImageNum)

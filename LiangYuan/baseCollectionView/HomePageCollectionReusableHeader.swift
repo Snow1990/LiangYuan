@@ -63,7 +63,7 @@ class HomePageCollectionReusableHeader: UICollectionReusableView {
             y: 0 * Constants.Scale,
             width: 610 * Constants.Scale,
             height: 80 * Constants.Scale)
-//        bgControl.backgroundColor = .blue
+        
         bgControl.addTarget(self, action: #selector(clickControl(sender:)), for: UIControlEvents.touchUpInside)
         self.addSubview(bgControl)
     }

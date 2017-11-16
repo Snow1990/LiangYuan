@@ -7,14 +7,28 @@
 //
 
 import UIKit
+import AVFoundation
+import SDWebImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // 注册后台播放
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setActive(true)
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print(error)
+        }
+
+//        SDImageCache.shared().clearMemory()
+//        SDImageCache.shared().clearDisk(onCompletion: nil)
         UINavigationBar.appearance().barStyle = .default
         
 //        UINavigationBar.appearance().tintColor = Constants.NavBGColor
@@ -28,6 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().tintColor = UIColor.black
         
         UIButton.appearance().tintColor = UIColor.black
+//        self.window?.makeKeyAndVisible()
+//        //设置根控制器
+//        let root=RootViewController()
+//        self.window!.rootViewController=root
         return true
     }
 

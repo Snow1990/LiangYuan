@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -268,10 +269,116 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="nPQ-9k-i1m"/>
+                    <connections>
+                        <segue destination="qbh-ap-vFS" kind="show" identifier="toAlbumsDetailSegue" id="mz8-AK-ZMd"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVk-wk-Wp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4084" y="725"/>
+        </scene>
+        <!--Course Page View Controller-->
+        <scene sceneID="3Xv-Ni-KMf">
+            <objects>
+                <viewController id="G68-fa-RpN" customClass="CoursePageViewController" customModule="LiangYuan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F77-uA-psw"/>
+                        <viewControllerLayoutGuide type="bottom" id="3op-HW-vwI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ap5-9B-f2G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gtE-jx-oRK">
+                                <rect key="frame" x="36" y="72" width="303" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="WDv-cF-f9y"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="启航"/>
+                                    <segment title="本科"/>
+                                    <segment title="进深"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="G68-fa-RpN" eventType="valueChanged" id="8JM-XE-8bg"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-pv-5tW">
+                                <rect key="frame" x="0.0" y="107" width="375" height="511"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vrd-nK-IeR">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uad-52-ryA">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3op-HW-vwI" firstAttribute="top" secondItem="Xzs-pv-5tW" secondAttribute="bottom" id="2Xm-Kq-LKp"/>
+                            <constraint firstItem="Xzs-pv-5tW" firstAttribute="leading" secondItem="ap5-9B-f2G" secondAttribute="leading" id="DLu-GB-a56"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gtE-jx-oRK" secondAttribute="trailing" constant="20" id="OrF-RM-pfZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Xzs-pv-5tW" secondAttribute="trailing" id="Xmc-xQ-ZCH"/>
+                            <constraint firstItem="gtE-jx-oRK" firstAttribute="leading" secondItem="ap5-9B-f2G" secondAttribute="leadingMargin" constant="20" id="bq9-5W-Sr2"/>
+                            <constraint firstItem="Xzs-pv-5tW" firstAttribute="top" secondItem="gtE-jx-oRK" secondAttribute="bottom" constant="8" id="c95-Gy-O48"/>
+                            <constraint firstItem="gtE-jx-oRK" firstAttribute="top" secondItem="F77-uA-psw" secondAttribute="bottom" constant="8" id="dWD-q9-GDd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ldi-gG-05b"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Xzs-pv-5tW" id="HO7-0v-eiH"/>
+                        <outlet property="segment" destination="gtE-jx-oRK" id="S0U-FZ-bnW"/>
+                        <segue destination="5No-FQ-xXv" kind="show" identifier="toChapterDetailSegue" id="nyy-6h-6SQ"/>
+                        <segue destination="yyZ-2z-mgX" kind="show" identifier="toCourseDetailSegue" id="Mis-GS-jWB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJU-jx-JWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5101.6000000000004" y="724.58770614692662"/>
+        </scene>
+        <!--Zhuanqu Detail View Controller-->
+        <scene sceneID="2b2-Ww-ja8">
+            <objects>
+                <viewController id="qbh-ap-vFS" customClass="ZhuanquDetailViewController" customModule="LiangYuan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4mL-ha-Lvx"/>
+                        <viewControllerLayoutGuide type="bottom" id="0uX-7g-Adk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gis-71-COn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naE-oW-pl9">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="naE-oW-pl9" secondAttribute="bottom" id="2eX-UF-ZUs"/>
+                            <constraint firstItem="naE-oW-pl9" firstAttribute="leading" secondItem="gis-71-COn" secondAttribute="leading" id="3BP-Dh-mxG"/>
+                            <constraint firstItem="naE-oW-pl9" firstAttribute="top" secondItem="4mL-ha-Lvx" secondAttribute="bottom" id="8D3-cc-EtH"/>
+                            <constraint firstAttribute="trailing" secondItem="naE-oW-pl9" secondAttribute="trailing" id="xKq-lI-g1g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="naE-oW-pl9" id="s76-YP-28F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ieq-t5-X9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4084" y="1610.6446776611695"/>
         </scene>
         <!--Home Page View Controller-->
         <scene sceneID="dRI-Pz-rkb">
@@ -280,7 +387,6 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cdU-3J-HAI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Zz-Ph-EFy">
                             <size key="itemSize" width="172" height="160"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -363,9 +469,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="1ZM-Oa-8m1" kind="relationship" relationship="viewControllers" id="o1k-kA-nMc"/>
-                        <segue destination="9Rn-pp-qsp" kind="relationship" relationship="viewControllers" id="Jrx-fM-atR"/>
-                        <segue destination="ZwF-0u-HYu" kind="relationship" relationship="viewControllers" id="2Us-UB-zD1"/>
-                        <segue destination="owg-Jb-JwF" kind="relationship" relationship="viewControllers" id="xqU-h5-GM2"/>
+                        <segue destination="6gJ-Ce-Jc4" kind="relationship" relationship="viewControllers" id="Yvk-or-S2q"/>
                         <segue destination="epd-0A-NXR" kind="relationship" relationship="viewControllers" id="Xb9-Kh-y9R"/>
                         <segue destination="s6Y-oH-7jo" kind="relationship" relationship="viewControllers" id="q5G-NS-R2E"/>
                     </connections>
@@ -377,7 +481,7 @@
         <!--首页-->
         <scene sceneID="g7q-yh-LKP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1ZM-Oa-8m1" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNav" automaticallyAdjustsScrollViewInsets="NO" id="1ZM-Oa-8m1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="table_icon1_normal" id="zdC-rQ-OVb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R3S-HC-Uyv">
@@ -488,6 +592,25 @@
             </objects>
             <point key="canvasLocation" x="4084" y="-81"/>
         </scene>
+        <!--课程-->
+        <scene sceneID="SF9-g3-aK3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6gJ-Ce-Jc4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="课程" image="table_icon2_normal" id="ZMr-vi-zrd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4JY-D1-Z9u">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="G68-fa-RpN" kind="relationship" relationship="rootViewController" id="45u-Ox-BSu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFE-fG-Sbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5102" y="-82"/>
+        </scene>
     </scenes>
     <resources>
         <image name="table_icon1_normal" width="29" height="22"/>
@@ -498,7 +621,7 @@
         <image name="table_icon6_normal" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oNw-Yz-90x"/>
-        <segue reference="409-yX-G3j"/>
+        <segue reference="nyy-6h-6SQ"/>
+        <segue reference="Mis-GS-jWB"/>
     </inferredMetricsTieBreakers>
 </document>

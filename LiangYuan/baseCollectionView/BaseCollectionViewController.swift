@@ -114,8 +114,7 @@ class BaseCollectionViewController: UICollectionViewController,UICollectionViewD
         return HomePageCollectionViewCell.getSize()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let Gap: CGFloat = 8 * Constants.Scale
-        return UIEdgeInsets(top: 0, left: Gap, bottom: 0, right: Gap)
+        return UIEdgeInsets(top: 0, left: Constants.Gap, bottom: 0, right: Constants.Gap)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: Constants.ScreenRect.width, height: 83 * Constants.Scale)
@@ -126,7 +125,6 @@ class BaseCollectionViewController: UICollectionViewController,UICollectionViewD
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let chapter = courseInfoArray[indexPath.section].chapters[indexPath.row]
-//        print(chapter.chapterCode)
         performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: chapter.chapterCode)
     }
     

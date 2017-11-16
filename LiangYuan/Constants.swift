@@ -18,6 +18,7 @@ struct Constants {
     static let ToAdDetailSegue = "toAdDetailSegue"
     static let ToCourseDetailSegue = "toCourseDetailSegue"
     static let ToChapterDetailSegue = "toChapterDetailSegue"
+    static let ToAlbumsDetailSegue = "toAlbumsDetailSegue"
 
     
     // 可重用cellID
@@ -34,7 +35,8 @@ struct Constants {
     
     
     // 颜色
-    static let HomePageBGColor = UIColor(red: 50/256, green: 93/256, blue: 106/256, alpha: 1)
+//    static let HomePageBGColor = UIColor(red: 50/256, green: 93/256, blue: 106/256, alpha: 1)
+    static let HomePageBGColor = UIColor(red: 245/256, green: 245/256, blue: 245/256, alpha: 1)
     static let NavBGColor = UIColor(red: 176/256, green: 93/256, blue: 40/256, alpha: 1)
     static let TabBGColor = UIColor(red: 147/256, green: 74/256, blue: 66/256, alpha: 1)
     static let TabViewBGGreen = UIColor(red: 217/255, green: 247/255, blue: 217/255, alpha: 0.8)
@@ -65,7 +67,7 @@ struct Constants {
     static let ScreenRect = UIScreen.main.bounds
     static let Scale = ScreenRect.width/720
     static let NavScale: CGFloat = 44/96
-    
+    static let Gap: CGFloat = 10 * Constants.Scale
 
     
 }

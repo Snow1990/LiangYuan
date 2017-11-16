@@ -37,14 +37,14 @@ class HomePageCollectionViewCell: UICollectionViewCell {
     }
     class func getSize() -> CGSize {
         return CGSize(
-            width: 342 * Constants.Scale,
+            width: 340 * Constants.Scale,
             height: 304 * Constants.Scale)
     }
     func initCell() {
         //课程图片
         imageView.backgroundColor = UIColor.brown
         imageView.isOpaque = false
-        imageView.frame = CGRect(x: 0, y: 0, width: 342 * Constants.Scale, height: 200 * Constants.Scale)
+        imageView.frame = CGRect(x: 0, y: 0, width: 340 * Constants.Scale, height: 200 * Constants.Scale)
         self.addSubview(imageView)
         
         
@@ -71,5 +71,9 @@ class HomePageCollectionViewCell: UICollectionViewCell {
             width: 168 * Constants.Scale,
             height: 24 * Constants.Scale)
         self.addSubview(clickCount)
+        
+        self.layer.borderColor = UIColor.darkGray.cgColor
+        self.layer.borderWidth = 1
+        
     }
 }

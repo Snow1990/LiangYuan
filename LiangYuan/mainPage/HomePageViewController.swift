@@ -18,15 +18,20 @@ class HomePageViewController: BaseCollectionViewController {
             self.collectionView?.reloadData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.initData), userInfo: nil, repeats: true)
         initCollectionView()
         initTabBar()
         initNav()
         initData()
+        timer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.initData), userInfo: nil, repeats: true)
+
     }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        self.collectionView?.reloadData()
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,6 +78,7 @@ class HomePageViewController: BaseCollectionViewController {
                     
                 }
             }
+
             guard let timer1 = self.timer
                 else{ return }
             timer1.invalidate()
@@ -87,6 +93,7 @@ class HomePageViewController: BaseCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+//        print(courseInfoArray.count)
         return courseInfoArray.count + 1
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -213,16 +220,16 @@ class HomePageViewController: BaseCollectionViewController {
     
     override func snClickButton(headerView: HomePageCollectionReusableHeader, button: UIButton) {
         guard let section = headerView.section else {return}
-        guard let subjectCoide = courseInfoArray[section].subjectCode else {return}
-        switch subjectCoide {
+        guard let subjectCode = courseInfoArray[section].subjectCode else {return}
+        switch subjectCode {
         case 1:
             self.tabBarController?.selectedIndex = 1
         case 2:
-            self.tabBarController?.selectedIndex = 2
+            self.tabBarController?.selectedIndex = 1
         case 3:
-            self.tabBarController?.selectedIndex = 3
+            self.tabBarController?.selectedIndex = 1
         case 4:
-            self.tabBarController?.selectedIndex = 4
+            self.tabBarController?.selectedIndex = 2
         default:
             return
         }
@@ -230,7 +237,7 @@ class HomePageViewController: BaseCollectionViewController {
 }
 extension HomePageViewController: AdScrollViewDelegate {
     func selectCourse(index: Int) {
-        if index == 1 {
+        if index == 0 {
             performSegue(withIdentifier: Constants.ToAdDetailSegue, sender: index)
         }
     }
