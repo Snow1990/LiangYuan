@@ -130,17 +130,26 @@ class AdScrollView: UIScrollView, UIScrollViewDelegate {
     //MARK: - 图片停止时,调用该函数使得滚动视图复用
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
+//        if self.contentOffset.x == 0 {
+//            currentImageNum = getForward(currentImageNum)
+//            pageControl.currentPage = getForward(currentImageNum)
+//        }else if self.contentOffset.x == self.frame.width * 2 {
+//            currentImageNum = getNext(currentImageNum)
+//            pageControl.currentPage = getForward(currentImageNum)
+//        }
+//        updateUI()
+//
+//        self.contentOffset = CGPoint(x: self.frame.width, y: 0)
         if self.contentOffset.x == 0 {
             currentImageNum = getForward(currentImageNum)
-            pageControl.currentPage = getForward(currentImageNum)
+            pageControl.currentPage = currentImageNum
         }else if self.contentOffset.x == self.frame.width * 2 {
             currentImageNum = getNext(currentImageNum)
-            pageControl.currentPage = getForward(currentImageNum)
+            pageControl.currentPage = currentImageNum
         }
         updateUI()
         
         self.contentOffset = CGPoint(x: self.frame.width, y: 0)
-        
         //手动控制图片滚动应该取消那个三秒的计时器
 //        moveTime.fireDate = NSDate(timeIntervalSinceNow: ChangeImageTime)
     }

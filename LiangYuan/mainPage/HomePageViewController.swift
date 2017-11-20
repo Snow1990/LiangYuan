@@ -18,7 +18,11 @@ class HomePageViewController: BaseCollectionViewController {
             self.collectionView?.reloadData()
         }
     }
-
+    var albumsInfoArray = [AlbumsInfo]() {
+        didSet{
+            self.collectionView?.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initCollectionView()
@@ -70,8 +74,15 @@ class HomePageViewController: BaseCollectionViewController {
                     self.newsInfoArray.append(news)
                 }
             }
-            if let courseJSONArray = json["result"]["subjects"].array {
+            if let albumsJSONArray = json["result"]["albums"].array {
+                for albumsJSON in albumsJSONArray {
+                    let albums = AlbumsInfo(albumJSON: albumsJSON)
+                    self.albumsInfoArray.append(albums)
+                }
                 
+            }
+            
+            if let courseJSONArray = json["result"]["subjects"].array {
                 for courseJSON in courseJSONArray {
                     let course = CourseInfo(courseJSON: courseJSON)
                     self.courseInfoArray.append(course)
@@ -94,14 +105,16 @@ class HomePageViewController: BaseCollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
 //        print(courseInfoArray.count)
-        return courseInfoArray.count + 1
+        return courseInfoArray.count + 2
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         if section == 0 {
             return 1
+        }else if section == 1{
+            return albumsInfoArray.count
         }else {
-            let row = courseInfoArray[section - 1].chapters.count
+            let row = courseInfoArray[section - 2].chapters.count
             if row >= 2 {
                 return 2
             }else {
@@ -117,9 +130,17 @@ class HomePageViewController: BaseCollectionViewController {
                 cell.scrollView.adScrollViewDelegate = self
                 return cell
             }
+        }else if indexPath.section == 1 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageCollectionViewCell.reuseIdentifier(), for: indexPath) as? HomePageCollectionViewCell else { return UICollectionViewCell() }
+            let albums = albumsInfoArray[indexPath.row]
+            cell.title.text = albums.title
+            cell.clickCountNum = 0
+            cell.imageView.sd_setImage(with: URL(string: albums.coverImgUrl ?? ""), completed: nil)
+            
+            return cell
         }else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageCollectionViewCell.reuseIdentifier(), for: indexPath) as? HomePageCollectionViewCell else { return UICollectionViewCell() }
-            let course = courseInfoArray[indexPath.section - 1]
+            let course = courseInfoArray[indexPath.section - 2]
             let chapter = course.chapters[indexPath.row]
             
             cell.title.text = chapter.chapterName
@@ -136,14 +157,11 @@ class HomePageViewController: BaseCollectionViewController {
         if kind == UICollectionElementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HomePageCollectionReusableHeader.reuseIdentifier(), for: indexPath) as! HomePageCollectionReusableHeader
             
-            guard indexPath.section != 0 else {
-                
-                return headerView
-            }
-            
-            headerView.section = indexPath.section-1
-            headerView.label.text = courseInfoArray[indexPath.section-1].courseName
-            if let subject = courseInfoArray[indexPath.section-1].subjectName {
+            guard indexPath.section != 0 else {return headerView}
+            guard indexPath.section != 1 else {return headerView}
+            headerView.section = indexPath.section-2
+            headerView.label.text = courseInfoArray[indexPath.section-2].courseName
+            if let subject = courseInfoArray[indexPath.section-2].subjectName {
                 headerView.btn.setTitle(subject, for: UIControlState.normal)
             }
             headerView.delegate = self
@@ -173,7 +191,7 @@ class HomePageViewController: BaseCollectionViewController {
         }
     }
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 0 {
+        if section == 0 || section == 1{
             return CGSize(width: Constants.ScreenRect.width, height: 0)
         }else {
             return CGSize(width: Constants.ScreenRect.width, height: 83 * Constants.Scale)
@@ -189,8 +207,11 @@ class HomePageViewController: BaseCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
 
+        }else if indexPath.section == 1 {
+            let albums = albumsInfoArray[indexPath.row]
+            performSegue(withIdentifier: Constants.ToAlbumsDetailSegue, sender: albums.albumCode)
         }else {
-            let chapter = courseInfoArray[indexPath.section  - 1].chapters[indexPath.row]
+            let chapter = courseInfoArray[indexPath.section  - 2].chapters[indexPath.row]
             performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: chapter.chapterCode)
         }
         
@@ -204,6 +225,11 @@ class HomePageViewController: BaseCollectionViewController {
         if let destination = segue.destination as? AdDetailViewController, let id = sender as? Int, segue.identifier == Constants.ToAdDetailSegue {
             
             destination.newsInfo = NewsInfo(newsCode: id)
+            destination.hidesBottomBarWhenPushed = true
+        }
+        if let destination = segue.destination as? ZhuanquDetailViewController, let id = sender as? Int, segue.identifier == Constants.ToAlbumsDetailSegue {
+            
+            destination.albumsInfo = AlbumsInfo(albumCode: id)
             destination.hidesBottomBarWhenPushed = true
         }
     }
@@ -224,6 +250,13 @@ class HomePageViewController: BaseCollectionViewController {
         switch subjectCode {
         case 1:
             self.tabBarController?.selectedIndex = 1
+//            if let controllers = self.tabBarController?.viewControllers{
+//                if let ctr = controllers[1].childViewControllers[0] as? CoursePageViewController {
+//                    
+//                    ctr.segment.selectedSegmentIndex = 1
+//                }
+//
+//            }
         case 2:
             self.tabBarController?.selectedIndex = 1
         case 3:

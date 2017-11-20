@@ -40,7 +40,7 @@ class AdCollectionViewCell: UICollectionViewCell {
         //广告页宽高比
         //        static let Scale:CGFloat = 19/8
         static let CellWidth: CGFloat = Constants.ScreenRect.width
-        static let CellHeight: CGFloat = Constants.ScreenRect.width/2.5
+        static let CellHeight: CGFloat = Constants.ScreenRect.width/64*24
         //        static let AdPageControlWidth: CGFloat = CellWidth/5
         //        static let AdPageControlHeight: CGFloat = 10
         //        static let AdPageNumber: Int = 5

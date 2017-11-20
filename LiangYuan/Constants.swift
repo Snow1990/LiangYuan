@@ -18,6 +18,8 @@ struct Constants {
     static let ToAdDetailSegue = "toAdDetailSegue"
     static let ToCourseDetailSegue = "toCourseDetailSegue"
     static let ToChapterDetailSegue = "toChapterDetailSegue"
+    static let ToAlbumsMoreSegue = "toAlbumsMoreSegue"
+
     static let ToAlbumsDetailSegue = "toAlbumsDetailSegue"
 
     

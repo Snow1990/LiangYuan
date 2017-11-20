@@ -271,6 +271,7 @@
                     <navigationItem key="navigationItem" id="nPQ-9k-i1m"/>
                     <connections>
                         <segue destination="qbh-ap-vFS" kind="show" identifier="toAlbumsDetailSegue" id="mz8-AK-ZMd"/>
+                        <segue destination="Y9D-rF-qfK" kind="show" identifier="toAlbumsMoreSegue" id="Jwf-Pc-U0K"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVk-wk-Wp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,16 +361,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naE-oW-pl9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="naE-oW-pl9" secondAttribute="bottom" id="2eX-UF-ZUs"/>
-                            <constraint firstItem="naE-oW-pl9" firstAttribute="leading" secondItem="gis-71-COn" secondAttribute="leading" id="3BP-Dh-mxG"/>
-                            <constraint firstItem="naE-oW-pl9" firstAttribute="top" secondItem="4mL-ha-Lvx" secondAttribute="bottom" id="8D3-cc-EtH"/>
-                            <constraint firstAttribute="trailing" secondItem="naE-oW-pl9" secondAttribute="trailing" id="xKq-lI-g1g"/>
+                            <constraint firstItem="naE-oW-pl9" firstAttribute="top" secondItem="gis-71-COn" secondAttribute="top" id="4CI-tc-9jA"/>
+                            <constraint firstAttribute="bottom" secondItem="naE-oW-pl9" secondAttribute="bottom" id="DRg-Qk-IaC"/>
+                            <constraint firstAttribute="trailing" secondItem="naE-oW-pl9" secondAttribute="trailing" id="bBf-d4-PDE"/>
+                            <constraint firstItem="naE-oW-pl9" firstAttribute="leading" secondItem="gis-71-COn" secondAttribute="leading" id="uzR-WR-YxW"/>
                         </constraints>
                     </view>
                     <connections>
@@ -378,7 +379,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ieq-t5-X9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4084" y="1610.6446776611695"/>
+            <point key="canvasLocation" x="5101.6000000000004" y="1610.6446776611695"/>
+        </scene>
+        <!--Zhuanqu More View Controller-->
+        <scene sceneID="fEz-3O-YDi">
+            <objects>
+                <collectionViewController id="Y9D-rF-qfK" customClass="ZhuanquMoreViewController" customModule="LiangYuan" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6qk-Ov-xKa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZF9-HO-SZw">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9j3-zU-fUI">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Y9D-rF-qfK" id="VS7-A3-Uia"/>
+                            <outlet property="delegate" destination="Y9D-rF-qfK" id="Zvq-XE-6ZM"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <segue destination="qbh-ap-vFS" kind="show" identifier="toAlbumsDetailSegue" id="kf3-em-eNe"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ls6-RI-VKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4084" y="1611"/>
+        </scene>
+        <!--Zhuanqu More View Controller-->
+        <scene sceneID="tla-LE-Pki">
+            <objects>
+                <viewController id="9vp-3W-xZs" customClass="ZhuanquMoreViewController" customModule="LiangYuan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OVG-Qh-0jP"/>
+                        <viewControllerLayoutGuide type="bottom" id="8TI-ID-lH4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="thE-yb-LRp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WwK-0a-ah4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6055" y="1761"/>
         </scene>
         <!--Home Page View Controller-->
         <scene sceneID="dRI-Pz-rkb">
@@ -413,6 +469,7 @@
                         <segue destination="5No-FQ-xXv" kind="show" identifier="toChapterDetailSegue" id="nXk-gN-X22"/>
                         <segue destination="yyZ-2z-mgX" kind="show" identifier="toCourseDetailSegue" id="iGC-ig-33F"/>
                         <segue destination="6KR-kW-MZQ" kind="show" identifier="toAdDetailSegue" id="eNg-0H-dsL"/>
+                        <segue destination="qbh-ap-vFS" kind="show" identifier="toAlbumsDetailSegue" id="daX-cE-6VV"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u10-yc-aer" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -621,7 +678,8 @@
         <image name="table_icon6_normal" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nyy-6h-6SQ"/>
-        <segue reference="Mis-GS-jWB"/>
+        <segue reference="daX-cE-6VV"/>
+        <segue reference="nXk-gN-X22"/>
+        <segue reference="iGC-ig-33F"/>
     </inferredMetricsTieBreakers>
 </document>

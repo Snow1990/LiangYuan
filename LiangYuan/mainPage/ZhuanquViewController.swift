@@ -120,8 +120,6 @@ class ZhuanquViewController: BaseCollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageCollectionViewCell.reuseIdentifier(), for: indexPath) as? HomePageCollectionViewCell else { return UICollectionViewCell() }
         let albumsSubject = albumsSubjectInfoArray[indexPath.section]
         let albums = albumsSubject.albumses[indexPath.row]
-//        let course = courseInfoArray[indexPath.section]
-//        let chapter = course.chapters[indexPath.row]
         
         cell.title.text = albums.title
         cell.clickCountNum = 0
@@ -151,10 +149,10 @@ class ZhuanquViewController: BaseCollectionViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-//        if let destination = segue.destination as? CourseViewController, let id = sender as? Int, segue.identifier == Constants.ToCourseDetailSegue {
-//            destination.courseInfo = CourseInfo(courseCode: id)
-//            destination.hidesBottomBarWhenPushed = true
-//        }
+        if let destination = segue.destination as? ZhuanquMoreViewController, let id = sender as? Int, segue.identifier == Constants.ToAlbumsMoreSegue {
+            destination.albumsSubjectInfo = AlbumsSubjectInfo(subjectCode: id)
+            destination.hidesBottomBarWhenPushed = true
+        }
         if let destination = segue.destination as? ZhuanquDetailViewController, let id = sender as? Int, segue.identifier == Constants.ToAlbumsDetailSegue {
             destination.albumsInfo = AlbumsInfo(albumCode: id)
             destination.hidesBottomBarWhenPushed = true
@@ -167,9 +165,9 @@ class ZhuanquViewController: BaseCollectionViewController {
     }
     override func snClickControl(headerView: HomePageCollectionReusableHeader, control: UIControl) {
         
-//        guard let section = headerView.section else {return}
-//        let course = courseInfoArray[section]
-//        performSegue(withIdentifier: Constants.ToCourseDetailSegue, sender: course.courseCode)
+        guard let section = headerView.section else {return}
+        let albumsSubject = albumsSubjectInfoArray[section]
+        performSegue(withIdentifier: Constants.ToAlbumsMoreSegue, sender: albumsSubject.subjectCode)
     }
 
 }

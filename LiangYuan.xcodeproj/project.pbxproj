@@ -12,6 +12,7 @@
 		870EAF811F96018900873304 /* TejiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870EAF801F96018900873304 /* TejiViewController.swift */; };
 		870EAF861F96053200873304 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870EAF851F96053200873304 /* CourseViewController.swift */; };
 		872221521F96EF1C00D31F14 /* NewsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872221511F96EF1C00D31F14 /* NewsInfo.swift */; };
+		872C89911FC18187009B6B43 /* ZhuanquMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C89901FC18186009B6B43 /* ZhuanquMoreViewController.swift */; };
 		872D69311F905844009D5E0A /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D69301F905844009D5E0A /* SideMenuTableViewCell.swift */; };
 		873002201FA7098C0013DD34 /* AdDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730021F1FA7098C0013DD34 /* AdDetailViewController.swift */; };
 		8745E4F21F9598D4004E5CDA /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E4F11F9598D4004E5CDA /* BaseCollectionViewController.swift */; };
@@ -50,6 +51,7 @@
 		870EAF801F96018900873304 /* TejiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TejiViewController.swift; sourceTree = "<group>"; };
 		870EAF851F96053200873304 /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		872221511F96EF1C00D31F14 /* NewsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInfo.swift; sourceTree = "<group>"; };
+		872C89901FC18186009B6B43 /* ZhuanquMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZhuanquMoreViewController.swift; sourceTree = "<group>"; };
 		872D69301F905844009D5E0A /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		8730021F1FA7098C0013DD34 /* AdDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailViewController.swift; sourceTree = "<group>"; };
 		8745E4F11F9598D4004E5CDA /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				870EAF801F96018900873304 /* TejiViewController.swift */,
 				87EE83231FB2B183006358D0 /* ZhuanquViewController.swift */,
 				87EE83331FB44BD5006358D0 /* delete */,
+				872C89901FC18186009B6B43 /* ZhuanquMoreViewController.swift */,
 				87EE83341FB44DF5006358D0 /* ZhuanquDetailViewController.swift */,
 			);
 			path = mainPage;
@@ -413,6 +416,7 @@
 				8745E4F81F95A897004E5CDA /* HomePageCollectionReusableHeader.swift in Sources */,
 				87DD47EE1F8DE9C5005592B0 /* Network.swift in Sources */,
 				87EE83261FB2B7EE006358D0 /* AlbumsInfo.swift in Sources */,
+				872C89911FC18187009B6B43 /* ZhuanquMoreViewController.swift in Sources */,
 				87DD47FA1F905501005592B0 /* QihangSideMenuTableViewController.swift in Sources */,
 				879418431F7B3FB10083BD34 /* Constants.swift in Sources */,
 				87DD47F41F8F1E2B005592B0 /* AdScrollView.swift in Sources */,
@@ -560,7 +564,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 02769AC945A7CF883B5F3EC0 /* Pods-LiangYuan.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Application;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2YD23S54V7;
@@ -581,7 +585,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FCC965B353898C56F00E22B /* Pods-LiangYuan.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Application;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2YD23S54V7;
@@ -590,8 +594,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Shengsiyuan.LiangYuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = LiangYuan_Development;
+				PROVISIONING_PROFILE = "4ae863a5-cdff-4a1d-9539-88c92b6dc0e2";
+				PROVISIONING_PROFILE_SPECIFIER = LiangYuan_Distribution;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
