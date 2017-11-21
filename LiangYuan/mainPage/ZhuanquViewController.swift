@@ -20,7 +20,7 @@ class ZhuanquViewController: BaseCollectionViewController {
     var timer: Timer!
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.initData), userInfo: nil, repeats: true)
+//        timer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.initData), userInfo: nil, repeats: true)
         initTabBar()
         initNav()
         initData()

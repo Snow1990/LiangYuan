@@ -29,7 +29,7 @@ class HomePageViewController: BaseCollectionViewController {
         initTabBar()
         initNav()
         initData()
-        timer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.initData), userInfo: nil, repeats: true)
+//        timer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.initData), userInfo: nil, repeats: true)
 
     }
 //    override func viewDidAppear(_ animated: Bool) {

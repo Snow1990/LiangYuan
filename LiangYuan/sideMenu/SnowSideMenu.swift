@@ -113,10 +113,11 @@ class SnowSideMenu: NSObject, UIGestureRecognizerDelegate {
     
     // 手势处理
     @objc private dynamic func handleGesture(_ recognizer: UIGestureRecognizer!) {
-        if let swipeGestureRecognizer = recognizer as? UISwipeGestureRecognizer {
+        
+//        if let swipeGestureRecognizer = recognizer as? UISwipeGestureRecognizer {
 //            toggleMenu(self.menuPosition == .Right && swipeGestureRecognizer.direction == .Left
 //                || self.menuPosition == .Left && swipeGestureRecognizer.direction == .Right)
-        }
+//        }
     }
     
     

@@ -63,7 +63,6 @@ class CourseViewController: BaseCollectionViewController {
             let json = JSON(JSONData)
             let course = CourseInfo(courseJSON: json["result"])
             self.courseInfo = course
-//            self.courseInfoArray.append(course)
         }
         
         

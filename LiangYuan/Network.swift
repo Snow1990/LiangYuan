@@ -192,10 +192,10 @@ struct Network {
     // 偏好设置文件名
     static let PreferFileName = "mutrain"
     static let PageSize = 20
-    // 测试
-    static let Domain = "http://120.78.62.199/elearn/v1/api/"
-    //    // 正式
-    //    static let Domain = "http://edu.youths.org.cn"
+//    // 测试
+//    static let Domain = "http://120.78.62.199/elearn/v1/api/"
+    // 正式
+    static let Domain = "http://www.ytrain.net/elearn/v1/api/"
     // 登陆
     static let Login = Domain + "/ws/app/auth/stu/login"
     // 获取公开课推荐的banner课程
