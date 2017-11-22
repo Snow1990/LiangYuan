@@ -125,7 +125,7 @@ class BaseCollectionViewController: UICollectionViewController,UICollectionViewD
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let chapter = courseInfoArray[indexPath.section].chapters[indexPath.row]
-        performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: chapter.chapterCode)
+        performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: (chapter.chapterCode, DownloadType.chapter))
     }
     
     // MARK: - Navigation
@@ -136,8 +136,9 @@ class BaseCollectionViewController: UICollectionViewController,UICollectionViewD
             destination.courseInfo = CourseInfo(courseCode: id)
             destination.hidesBottomBarWhenPushed = true
         }
-        if let destination = segue.destination as? ChapterViewController, let id = sender as? Int, segue.identifier == Constants.ToChapterDetailSegue {
-            destination.chapterInfo = ChapterInfo(chapterCode: id)
+        if let destination = segue.destination as? ChapterViewController, let (id, type) = sender as? (Int , DownloadType), segue.identifier == Constants.ToChapterDetailSegue {
+            destination.code = id
+            destination.downloadType = type
             destination.hidesBottomBarWhenPushed = true
         }
     }

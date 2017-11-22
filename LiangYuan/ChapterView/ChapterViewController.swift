@@ -11,19 +11,30 @@ import AVFoundation
 import Alamofire
 import SwiftyJSON
 import MediaPlayer
-
+enum DownloadType {
+    case chapter, albums
+}
 class ChapterViewController: UIViewController {
     // MARK:- Properties
-    var chapterInfo: ChapterInfo? {
+//    var chapterInfo: ChapterInfo? {
+//        didSet {
+//            initNav()
+//        }
+//    }
+    var code = 0
+    var downloadType: DownloadType?
+    var navTitle: String?
+    var mp3URL: String?
+    var content: String? {
         didSet {
-            initNav()
+            self.webView.loadHTMLString(content ?? "", baseURL: nil)
         }
     }
     var isFirstLaunch = true
     var isError = false
     // MARK:- UI Elements
     var playerItem:AVPlayerItem!
-    var avplayer:AVPlayer!
+    var avplayer:AVPlayer?
 //    var playerLayer:AVPlayerLayer!
     var timer: Timer!
     @IBOutlet weak var playerView: SNPlayerView!
@@ -34,7 +45,13 @@ class ChapterViewController: UIViewController {
         super.viewDidLoad()
         
         initNav()
-        initData()
+        if let type = downloadType {
+            switch type{
+            case .albums: initAlbumsData()
+            case .chapter: initChapterData()
+            }
+        }
+//        initData()
         self.playerView.delegate = self
 
     }
@@ -69,7 +86,7 @@ class ChapterViewController: UIViewController {
         self.navigationItem.backBarButtonItem = item
         
         let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 30.0))
-        titleLabel.text = chapterInfo?.chapterName
+        titleLabel.text = navTitle
         titleLabel.textColor = .black
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         navigationItem.titleView = titleLabel
@@ -80,7 +97,7 @@ class ChapterViewController: UIViewController {
 
         // 检测连接是否存在 不存在报错
 //        print(chapterInfo?.mediaUrl)
-        guard let url = URL(string: chapterInfo?.mediaUrl ?? "") else {
+        guard let url = URL(string: mp3URL ?? "") else {
             showError(reason: "音频链接错误")
             self.isError = true
             return
@@ -130,7 +147,7 @@ class ChapterViewController: UIViewController {
             // 监听状态改变
             if playerItem.status == AVPlayerItemStatus.readyToPlay {
                 // 只有在这个状态下才能播放
-                self.avplayer.play()
+                self.avplayer?.play()
                 self.playerView.playBtn.setImage(UIImage(named: "player_pause"), for: UIControlState.normal)
             }else {
                 showError(reason: "音频加载异常")
@@ -140,11 +157,11 @@ class ChapterViewController: UIViewController {
     
     @objc func update(){
         //暂停的时候
-        if avplayer.rate == 0 || self.avplayer.currentItem?.status != .readyToPlay{
+        if avplayer?.rate == 0 || self.avplayer?.currentItem?.status != .readyToPlay{
             return
         }
         // 当前播放到的时间
-        let currentTime = CMTimeGetSeconds(self.avplayer.currentTime())
+        let currentTime = CMTimeGetSeconds(self.avplayer!.currentTime())
         // 总时间
         let totalTime   = TimeInterval(playerItem.duration.value) / TimeInterval(playerItem.duration.timescale)
         // timescale 这里表示压缩比例
@@ -173,7 +190,7 @@ class ChapterViewController: UIViewController {
         let postion = Double(self.playerView.slider.value)
         let duration = Double(self.playerView.slider.maximumValue)
         
-        mpic.nowPlayingInfo = [MPMediaItemPropertyTitle: chapterInfo?.chapterName ?? "",
+        mpic.nowPlayingInfo = [MPMediaItemPropertyTitle: navTitle ?? "",
                                MPMediaItemPropertyArtist: "",
                                MPMediaItemPropertyArtwork: albumArt,
                                MPNowPlayingInfoPropertyElapsedPlaybackTime: postion,
@@ -197,10 +214,10 @@ class ChapterViewController: UIViewController {
                 print("下一首")
             case .remoteControlPlay:
                 print("播放")
-                avplayer.play()
+                avplayer?.play()
             case .remoteControlPause:
                 print("暂停")
-                avplayer.pause()
+                avplayer?.pause()
                 //后台播放显示信息进度停止
                 setInfoCenterCredentials(playbackState: 0)
             default:
@@ -232,18 +249,28 @@ class ChapterViewController: UIViewController {
         alertView.show()
     }
     // MARK: - 从网络下载数据
-    func initData() {
-        guard let code = chapterInfo?.chapterCode else {return}
+    func initChapterData() {
         //下载章节页数据
         let url = Network.Domain + "course/chapter/one/\(code)"
-        
         Alamofire.request(url).responseJSON { [unowned self] (response) in
-            
             guard let JSONData = response.result.value else { return }
             let json = JSON(JSONData)
             let chapter = ChapterInfo(chapterJSON: json["result"])
-            self.chapterInfo = chapter
-            self.webView.loadHTMLString(chapter.content ?? "", baseURL: nil)
+            self.navTitle = chapter.chapterName
+            self.mp3URL = chapter.mediaUrl
+            self.content = chapter.content
+        }
+    }
+    func initAlbumsData() {
+        //下载章节页数据
+        let url = Network.Domain + "album/one/\(code)"
+        Alamofire.request(url).responseJSON { [unowned self] (response) in
+            guard let JSONData = response.result.value else { return }
+            let json = JSON(JSONData)
+            let albums = AlbumsInfo(albumJSON: json["result"])
+            self.navTitle = albums.title
+            self.mp3URL = albums.fileUrl
+            self.content = albums.content
         }
     }
     /*
@@ -263,15 +290,15 @@ extension ChapterViewController:SNPlayerViewDelegate{
     func snplayer(playerView: SNPlayerView, sliderTouchUpOut slider: UISlider) {
         
         //当视频状态为AVPlayerStatusReadyToPlay时才处理
-        if self.avplayer.status == AVPlayerStatus.readyToPlay{
+        if self.avplayer?.status == AVPlayerStatus.readyToPlay{
             let duration = Int64(slider.value)
             let seekTime = CMTimeMake(duration, 1)
             // 指定视频位置
-            self.avplayer.seek(to: seekTime, completionHandler: { (b) in
+            self.avplayer?.seek(to: seekTime, completionHandler: { (b) in
                 // 别忘记改状态
-                if self.avplayer.rate == 0
+                if self.avplayer?.rate == 0
                 {
-                    self.avplayer.play()
+                    self.avplayer?.play()
                     self.playerView.playBtn.setImage(UIImage(named: "player_pause"), for: UIControlState.normal)
                 }
             })
@@ -286,14 +313,14 @@ extension ChapterViewController:SNPlayerViewDelegate{
             playerView.slider.isEnabled = true
             playBtn.isEnabled = true
         }
-        if avplayer.rate == 0{
-            if avplayer.status == AVPlayerStatus.readyToPlay{
-                avplayer.play()
+        if avplayer?.rate == 0{
+            if avplayer?.status == AVPlayerStatus.readyToPlay{
+                avplayer?.play()
                 // 根据状态设定图片
                 playBtn.setImage(UIImage(named: "player_pause"), for: UIControlState.normal)
             }
         }else{
-            avplayer.pause()
+            avplayer?.pause()
             playBtn.setImage(UIImage(named: "player_play"), for: UIControlState.normal)
             //后台播放显示信息进度停止
             setInfoCenterCredentials(playbackState: 0)

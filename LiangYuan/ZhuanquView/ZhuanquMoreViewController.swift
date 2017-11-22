@@ -113,7 +113,7 @@ class ZhuanquMoreViewController: BaseCollectionViewController {
         let albums = albumsSubject.albumses[indexPath.row]
         cell.title.text = albums.title
         cell.clickCountNum = 0
-        cell.imageView.sd_setImage(with: URL(string: albums.coverImgUrl ?? ""), completed: nil)
+        cell.imageView.sd_setImage(with: URL(string: albums.fileUrl ?? ""), completed: nil)
         
         return cell
     }

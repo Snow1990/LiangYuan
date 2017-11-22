@@ -137,7 +137,7 @@ class CourseViewController: BaseCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let course = courseInfo {
             let chapter = course.chapters[indexPath.row]
-            performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: chapter.chapterCode)
+            performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: (chapter.chapterCode, DownloadType.chapter))
 
         }
     }

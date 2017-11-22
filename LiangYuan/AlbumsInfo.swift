@@ -24,6 +24,8 @@ class AlbumsInfo: NSObject {
     var author: String?
     var content: String?
     var fileUrl: String?
+    var fileType: Int?
+    var dateTime: String?
 
     init(albumCode: Int) {
         self.albumCode = albumCode
@@ -37,6 +39,8 @@ class AlbumsInfo: NSObject {
         self.author = albumJSON["author"].string
         self.content = albumJSON["content"].string
         self.fileUrl = albumJSON["fileUrl"].string
+        self.fileType = albumJSON["fileType"].int
+        self.dateTime = albumJSON["dateTime"].string
 
     }
 }

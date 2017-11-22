@@ -21,6 +21,11 @@
 		8745E4F81F95A897004E5CDA /* HomePageCollectionReusableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E4F71F95A897004E5CDA /* HomePageCollectionReusableHeader.swift */; };
 		8745E4FA1F95B6F4004E5CDA /* HomePageCollectionReusableFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E4F91F95B6F4004E5CDA /* HomePageCollectionReusableFooter.swift */; };
 		87510B5D1F9DD20C00ABFBD0 /* SNPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87510B5C1F9DD20C00ABFBD0 /* SNPlayerView.swift */; };
+		8759F06A1FC52026009B7EE2 /* AlbumsTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759F0691FC52026009B7EE2 /* AlbumsTabInfo.swift */; };
+		8759F06C1FC52749009B7EE2 /* ZhuanquCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759F06B1FC52749009B7EE2 /* ZhuanquCollectionViewCell.swift */; };
+		8759F06F1FC52D2B009B7EE2 /* ZhuanquMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759F06E1FC52D2B009B7EE2 /* ZhuanquMoreTableViewController.swift */; };
+		8759F0711FC542CD009B7EE2 /* ZhuanquMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759F0701FC542CD009B7EE2 /* ZhuanquMoreTableViewCell.swift */; };
+		8759F0731FC55625009B7EE2 /* ZhuanquDetailWithVoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759F0721FC55625009B7EE2 /* ZhuanquDetailWithVoiceVC.swift */; };
 		878F6E2F1F97241C00E6D4A2 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F6E2E1F97241C00E6D4A2 /* ChapterViewController.swift */; };
 		879418411F7B35000083BD34 /* CourseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879418401F7B35000083BD34 /* CourseInfo.swift */; };
 		879418431F7B3FB10083BD34 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879418421F7B3FB10083BD34 /* Constants.swift */; };
@@ -60,6 +65,11 @@
 		8745E4F71F95A897004E5CDA /* HomePageCollectionReusableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionReusableHeader.swift; sourceTree = "<group>"; };
 		8745E4F91F95B6F4004E5CDA /* HomePageCollectionReusableFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionReusableFooter.swift; sourceTree = "<group>"; };
 		87510B5C1F9DD20C00ABFBD0 /* SNPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNPlayerView.swift; sourceTree = "<group>"; };
+		8759F0691FC52026009B7EE2 /* AlbumsTabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTabInfo.swift; sourceTree = "<group>"; };
+		8759F06B1FC52749009B7EE2 /* ZhuanquCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZhuanquCollectionViewCell.swift; sourceTree = "<group>"; };
+		8759F06E1FC52D2B009B7EE2 /* ZhuanquMoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZhuanquMoreTableViewController.swift; sourceTree = "<group>"; };
+		8759F0701FC542CD009B7EE2 /* ZhuanquMoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZhuanquMoreTableViewCell.swift; sourceTree = "<group>"; };
+		8759F0721FC55625009B7EE2 /* ZhuanquDetailWithVoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZhuanquDetailWithVoiceVC.swift; sourceTree = "<group>"; };
 		878F6E2E1F97241C00E6D4A2 /* ChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		879418401F7B35000083BD34 /* CourseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseInfo.swift; sourceTree = "<group>"; };
 		879418421F7B3FB10083BD34 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -116,9 +126,6 @@
 				87EE83311FB42626006358D0 /* CoursePageViewController.swift */,
 				870EAF801F96018900873304 /* TejiViewController.swift */,
 				87EE83231FB2B183006358D0 /* ZhuanquViewController.swift */,
-				87EE83331FB44BD5006358D0 /* delete */,
-				872C89901FC18186009B6B43 /* ZhuanquMoreViewController.swift */,
-				87EE83341FB44DF5006358D0 /* ZhuanquDetailViewController.swift */,
 			);
 			path = mainPage;
 			sourceTree = "<group>";
@@ -161,14 +168,29 @@
 			path = AdView;
 			sourceTree = "<group>";
 		};
+		8759F06D1FC52CF4009B7EE2 /* ZhuanquView */ = {
+			isa = PBXGroup;
+			children = (
+				8759F06E1FC52D2B009B7EE2 /* ZhuanquMoreTableViewController.swift */,
+				8759F0701FC542CD009B7EE2 /* ZhuanquMoreTableViewCell.swift */,
+				87EE83341FB44DF5006358D0 /* ZhuanquDetailViewController.swift */,
+				8759F0721FC55625009B7EE2 /* ZhuanquDetailWithVoiceVC.swift */,
+				872C89901FC18186009B6B43 /* ZhuanquMoreViewController.swift */,
+				8759F06B1FC52749009B7EE2 /* ZhuanquCollectionViewCell.swift */,
+			);
+			path = ZhuanquView;
+			sourceTree = "<group>";
+		};
 		8794183D1F7B34830083BD34 /* controller */ = {
 			isa = PBXGroup;
 			children = (
 				870EAF841F9604C900873304 /* mainPage */,
+				8759F06D1FC52CF4009B7EE2 /* ZhuanquView */,
 				870EAF821F96048200873304 /* baseCollectionView */,
 				8730021C1FA709020013DD34 /* CourseView */,
 				8730021D1FA7091B0013DD34 /* ChapterView */,
 				8730021E1FA709260013DD34 /* AdView */,
+				87EE83331FB44BD5006358D0 /* delete */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -181,6 +203,7 @@
 				872221511F96EF1C00D31F14 /* NewsInfo.swift */,
 				87EE83251FB2B7EE006358D0 /* AlbumsInfo.swift */,
 				87EE83271FB2F22D006358D0 /* AlbumsSubjectInfo.swift */,
+				8759F0691FC52026009B7EE2 /* AlbumsTabInfo.swift */,
 				879418421F7B3FB10083BD34 /* Constants.swift */,
 			);
 			name = model;
@@ -410,14 +433,17 @@
 				87EEA83B1F9619CF003638C2 /* CourseCollectionReusableHeader.swift in Sources */,
 				87510B5D1F9DD20C00ABFBD0 /* SNPlayerView.swift in Sources */,
 				87DD47EC1F8B0E46005592B0 /* ChapterInfo.swift in Sources */,
+				8759F06F1FC52D2B009B7EE2 /* ZhuanquMoreTableViewController.swift in Sources */,
 				872221521F96EF1C00D31F14 /* NewsInfo.swift in Sources */,
 				87EE83351FB44DF5006358D0 /* ZhuanquDetailViewController.swift in Sources */,
 				87EE83241FB2B183006358D0 /* ZhuanquViewController.swift in Sources */,
 				8745E4F81F95A897004E5CDA /* HomePageCollectionReusableHeader.swift in Sources */,
 				87DD47EE1F8DE9C5005592B0 /* Network.swift in Sources */,
+				8759F0731FC55625009B7EE2 /* ZhuanquDetailWithVoiceVC.swift in Sources */,
 				87EE83261FB2B7EE006358D0 /* AlbumsInfo.swift in Sources */,
 				872C89911FC18187009B6B43 /* ZhuanquMoreViewController.swift in Sources */,
 				87DD47FA1F905501005592B0 /* QihangSideMenuTableViewController.swift in Sources */,
+				8759F06A1FC52026009B7EE2 /* AlbumsTabInfo.swift in Sources */,
 				879418431F7B3FB10083BD34 /* Constants.swift in Sources */,
 				87DD47F41F8F1E2B005592B0 /* AdScrollView.swift in Sources */,
 				8745E4FA1F95B6F4004E5CDA /* HomePageCollectionReusableFooter.swift in Sources */,
@@ -425,8 +451,10 @@
 				87EE83321FB42626006358D0 /* CoursePageViewController.swift in Sources */,
 				87DD47F61F904991005592B0 /* SnowSideMenu.swift in Sources */,
 				872D69311F905844009D5E0A /* SideMenuTableViewCell.swift in Sources */,
+				8759F06C1FC52749009B7EE2 /* ZhuanquCollectionViewCell.swift in Sources */,
 				87EEA8391F960B3A003638C2 /* HomePageViewController.swift in Sources */,
 				870EAF811F96018900873304 /* TejiViewController.swift in Sources */,
+				8759F0711FC542CD009B7EE2 /* ZhuanquMoreTableViewCell.swift in Sources */,
 				870EAF861F96053200873304 /* CourseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

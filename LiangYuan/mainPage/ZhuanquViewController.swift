@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class ZhuanquViewController: BaseCollectionViewController {
 
-    var albumsSubjectInfoArray = [AlbumsSubjectInfo]() {
+    var albumsTabInfoArray = [AlbumsTabInfo]() {
         didSet{
             self.collectionView?.reloadData()
         }
@@ -24,6 +24,9 @@ class ZhuanquViewController: BaseCollectionViewController {
         initTabBar()
         initNav()
         initData()
+        collectionView?.register(
+            ZhuanquCollectionViewCell.classForCoder(),
+            forCellWithReuseIdentifier: ZhuanquCollectionViewCell.reuseIdentifier())
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,11 +89,11 @@ class ZhuanquViewController: BaseCollectionViewController {
             
             guard let JSONData = response.result.value else { return }
             let json = JSON(JSONData)
-            guard let albumsSubjectJSONArray = json["result"].array else {return}
+            guard let albumsTabJSONArray = json["result"].array else {return}
             
-            for albumsSubjectJSON in albumsSubjectJSONArray {
-                let albumsSubject = AlbumsSubjectInfo(albumSubjectJSON: albumsSubjectJSON)
-                self.albumsSubjectInfoArray.append(albumsSubject)
+            for albumsTabJSON in albumsTabJSONArray {
+                let albumsTab = AlbumsTabInfo(albumsTabJSON: albumsTabJSON)
+                self.albumsTabInfoArray.append(albumsTab)
             }
             guard let timer1 = self.timer
                 else{ return }
@@ -102,28 +105,29 @@ class ZhuanquViewController: BaseCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return albumsSubjectInfoArray.count
+        return albumsTabInfoArray.count
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        let row = albumsSubjectInfoArray[section].albumses.count
-        if row >= 2 {
-            return 2
-        }else {
-            return row
-        }
+        let row = albumsTabInfoArray[section].children.count
+        return row
+//        if row >= 2 {
+//            return 2
+//        }else {
+//            return row
+//        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageCollectionViewCell.reuseIdentifier(), for: indexPath) as? HomePageCollectionViewCell else { return UICollectionViewCell() }
-        let albumsSubject = albumsSubjectInfoArray[indexPath.section]
-        let albums = albumsSubject.albumses[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ZhuanquCollectionViewCell.reuseIdentifier(), for: indexPath) as? ZhuanquCollectionViewCell else { return UICollectionViewCell() }
+        let albumsTab = albumsTabInfoArray[indexPath.section]
+        let child = albumsTab.children[indexPath.row]
         
-        cell.title.text = albums.title
-        cell.clickCountNum = 0
-        cell.imageView.sd_setImage(with: URL(string: albums.coverImgUrl ?? ""), completed: nil)
+        cell.title.text = child.subjectName
+//        cell.clickCountNum = 0
+////        cell.imageView.sd_setImage(with: URL(string: albums.fileUrl ?? ""), completed: nil)
         
         return cell
     }
@@ -131,8 +135,9 @@ class ZhuanquViewController: BaseCollectionViewController {
         if kind == UICollectionElementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HomePageCollectionReusableHeader.reuseIdentifier(), for: indexPath) as! HomePageCollectionReusableHeader
             headerView.section = indexPath.section
-            headerView.label.text = albumsSubjectInfoArray[indexPath.section].subjectName
+            headerView.label.text = albumsTabInfoArray[indexPath.section].subjectName
             headerView.btn.setTitle("", for: UIControlState.normal)
+            headerView.moreLabel.text = ""
             headerView.delegate = self
             headerView.backgroundColor = UIColor.clear
             return headerView
@@ -143,7 +148,9 @@ class ZhuanquViewController: BaseCollectionViewController {
             return footView
         }
     }
-    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return ZhuanquCollectionViewCell.getSize()
+    }
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -157,17 +164,21 @@ class ZhuanquViewController: BaseCollectionViewController {
             destination.albumsInfo = AlbumsInfo(albumCode: id)
             destination.hidesBottomBarWhenPushed = true
         }
+        if let destination = segue.destination as? ZhuanquMoreTableViewController, let id = sender as? Int, segue.identifier == Constants.ToAlbumsMoreTableViewSegue {
+            destination.subjectCode = id
+            destination.hidesBottomBarWhenPushed = true
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let albums = albumsSubjectInfoArray[indexPath.section].albumses[indexPath.row]
-        performSegue(withIdentifier: Constants.ToAlbumsDetailSegue, sender: albums.albumCode)
+        let child = albumsTabInfoArray[indexPath.section].children[indexPath.row]
+        performSegue(withIdentifier: Constants.ToAlbumsMoreTableViewSegue, sender: child.subjectCode)
     }
     override func snClickControl(headerView: HomePageCollectionReusableHeader, control: UIControl) {
         
         guard let section = headerView.section else {return}
-        let albumsSubject = albumsSubjectInfoArray[section]
-        performSegue(withIdentifier: Constants.ToAlbumsMoreSegue, sender: albumsSubject.subjectCode)
+        let albumsTab = albumsTabInfoArray[section]
+        performSegue(withIdentifier: Constants.ToAlbumsMoreTableViewSegue, sender: albumsTab.subjectCode)
     }
 
 }

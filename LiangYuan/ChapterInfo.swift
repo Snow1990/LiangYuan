@@ -26,8 +26,6 @@ class ChapterInfo: NSObject {
     var teacher: String?
     var content: String?
     
-    
-    
     init(chapterCode: Int) {
         self.chapterCode = chapterCode
     }

@@ -77,6 +77,7 @@ class HomePageViewController: BaseCollectionViewController {
             if let albumsJSONArray = json["result"]["albums"].array {
                 for albumsJSON in albumsJSONArray {
                     let albums = AlbumsInfo(albumJSON: albumsJSON)
+                    albums.title = albumsJSON["albumTitle"].string
                     self.albumsInfoArray.append(albums)
                 }
                 
@@ -135,7 +136,7 @@ class HomePageViewController: BaseCollectionViewController {
             let albums = albumsInfoArray[indexPath.row]
             cell.title.text = albums.title
             cell.clickCountNum = 0
-            cell.imageView.sd_setImage(with: URL(string: albums.coverImgUrl ?? ""), completed: nil)
+            cell.imageView.sd_setImage(with: URL(string: albums.fileUrl ?? ""), completed: nil)
             
             return cell
         }else {
@@ -209,10 +210,16 @@ class HomePageViewController: BaseCollectionViewController {
 
         }else if indexPath.section == 1 {
             let albums = albumsInfoArray[indexPath.row]
+//            if let mp3URL = albums.fileUrl {
+//                if mp3URL != "" {
+//                    performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: (albums.albumCode, DownloadType.albums))
+//                    return
+//                }
+//            }
             performSegue(withIdentifier: Constants.ToAlbumsDetailSegue, sender: albums.albumCode)
         }else {
             let chapter = courseInfoArray[indexPath.section  - 2].chapters[indexPath.row]
-            performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: chapter.chapterCode)
+            performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: (chapter.chapterCode, DownloadType.chapter))
         }
         
     }

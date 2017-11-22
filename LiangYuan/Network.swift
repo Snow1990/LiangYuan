@@ -122,62 +122,6 @@ extension DataRequest {
 struct Network {
     
     
-//    enum Router: URLRequestConvertible {
-//
-//        case Image(imagePath:String)
-//        case CourseByPage(pageNo: Int, pageSize: Int)
-//        case CourseByType(pageNo: Int, maxTypeId: String?)
-//        case CourseByKeyword(keyword: String)
-//        case CourseDetail(courseId: String, studentId: String?)
-//
-//        var URLRequest: NSURLRequest {
-//            let (path:String, parameters: [String:AnyObject]) = {
-//                switch self {
-//                case Router.Image(let imagePath):
-//                    let params = [
-//                        "image": imagePath
-//                    ]
-//                    return (GetImage, params)
-//
-//                case Router.CourseByPage(let pageNo, let pageSize):
-//                    let params: [String:AnyObject] = [
-//                        "pageNo": pageNo,
-//                        "pageSize": pageSize
-//                    ]
-//                    return (GetPublicCourses, params)
-//
-//                case Router.CourseByType(let pageNo, let maxTypeId):
-//                    let params: [String:AnyObject] = [
-//                        "pageNo": pageNo,
-//                        "pageSize": 20,
-//                        "maxTypeId": maxTypeId ?? ""
-//                    ]
-//                    return (GetPublicCourses, params)
-//
-//                case Router.CourseByKeyword(let keyword):
-//                    let params: [String:AnyObject] = [
-//                        "pageSize": 20,
-//                        "keyword": keyword
-//                    ]
-//                    return (GetPublicCourses, params)
-//                case Router.CourseDetail(let courseId, let studentId):
-//                    let params: [String:AnyObject] = [
-//                        "id": courseId,
-//                        "stuId": studentId ?? ""
-//                    ]
-//                    return (GetPublicCourse, params)
-//
-//                }
-//            }()
-//
-//            let url = NSURL(string: path)!
-//            let request = NSURLRequest(URL: url)
-//
-//            return Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters).0
-//        }
-//
-//    }
-    
     
     //文件存储
     static let libraryPath = NSHomeDirectory() + "/Library"
@@ -192,8 +136,9 @@ struct Network {
     // 偏好设置文件名
     static let PreferFileName = "mutrain"
     static let PageSize = 20
-//    // 测试
+    // 测试
 //    static let Domain = "http://120.78.62.199/elearn/v1/api/"
+//    static let Domain = "http://112.74.49.243/elearn/v1/api/"
     // 正式
     static let Domain = "http://www.ytrain.net/elearn/v1/api/"
     // 登陆
