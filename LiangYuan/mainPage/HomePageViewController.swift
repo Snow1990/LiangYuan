@@ -32,10 +32,6 @@ class HomePageViewController: BaseCollectionViewController {
 //        timer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.initData), userInfo: nil, repeats: true)
 
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        self.collectionView?.reloadData()
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -80,14 +76,12 @@ class HomePageViewController: BaseCollectionViewController {
                     albums.title = albumsJSON["albumTitle"].string
                     self.albumsInfoArray.append(albums)
                 }
-                
             }
             
             if let courseJSONArray = json["result"]["subjects"].array {
                 for courseJSON in courseJSONArray {
                     let course = CourseInfo(courseJSON: courseJSON)
                     self.courseInfoArray.append(course)
-                    
                 }
             }
 
@@ -100,12 +94,12 @@ class HomePageViewController: BaseCollectionViewController {
     override func initCollectionView() {
         super.initCollectionView()
         collectionView?.register(AdCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: AdCollectionViewCell.reuseIdentifier())
+        collectionView?.register(HomePageZhuanquCell.classForCoder(), forCellWithReuseIdentifier: HomePageZhuanquCell.reuseIdentifier())
     }
     
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-//        print(courseInfoArray.count)
+
         return courseInfoArray.count + 2
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -132,10 +126,10 @@ class HomePageViewController: BaseCollectionViewController {
                 return cell
             }
         }else if indexPath.section == 1 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageCollectionViewCell.reuseIdentifier(), for: indexPath) as? HomePageCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageZhuanquCell.reuseIdentifier(), for: indexPath) as? HomePageZhuanquCell else { return UICollectionViewCell() }
             let albums = albumsInfoArray[indexPath.row]
-            cell.title.text = albums.title
-            cell.clickCountNum = 0
+//            cell.title.text = albums.title
+//            cell.clickCountNum = 0
             cell.imageView.sd_setImage(with: URL(string: albums.fileUrl ?? ""), completed: nil)
             
             return cell
@@ -178,6 +172,8 @@ class HomePageViewController: BaseCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             return AdCollectionViewCell.getSize()
+        }else if indexPath.section == 1 {
+            return HomePageZhuanquCell.getSize()
         }else {
             return HomePageCollectionViewCell.getSize()
         }
@@ -186,9 +182,7 @@ class HomePageViewController: BaseCollectionViewController {
         if section == 0 {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }else {
-            
-            let Gap: CGFloat = 8 * Constants.Scale
-            return UIEdgeInsets(top: 0, left: Gap, bottom: 0, right: Gap)
+            return UIEdgeInsets(top: 0, left: Constants.Gap, bottom: 0, right: Constants.Gap)
         }
     }
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -210,18 +204,17 @@ class HomePageViewController: BaseCollectionViewController {
 
         }else if indexPath.section == 1 {
             let albums = albumsInfoArray[indexPath.row]
-//            if let mp3URL = albums.fileUrl {
-//                if mp3URL != "" {
-//                    performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: (albums.albumCode, DownloadType.albums))
-//                    return
-//                }
-//            }
-            performSegue(withIdentifier: Constants.ToAlbumsDetailSegue, sender: albums.albumCode)
+            if indexPath.row == 0 {
+                performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: (albums.albumCode, DownloadType.albums))
+
+            }else {
+                performSegue(withIdentifier: Constants.ToAlbumsDetailSegue, sender: albums.albumCode)
+            }
+
         }else {
             let chapter = courseInfoArray[indexPath.section  - 2].chapters[indexPath.row]
             performSegue(withIdentifier: Constants.ToChapterDetailSegue, sender: (chapter.chapterCode, DownloadType.chapter))
         }
-        
     }
     
     // MARK: - Navigation
@@ -257,17 +250,25 @@ class HomePageViewController: BaseCollectionViewController {
         switch subjectCode {
         case 1:
             self.tabBarController?.selectedIndex = 1
-//            if let controllers = self.tabBarController?.viewControllers{
-//                if let ctr = controllers[1].childViewControllers[0] as? CoursePageViewController {
-//                    
-//                    ctr.segment.selectedSegmentIndex = 1
-//                }
-//
-//            }
+            if let controllers = self.tabBarController?.viewControllers{
+                if let ctr = controllers[1].childViewControllers[0] as? CoursePageViewController {
+                    ctr.segmentIndex = 0
+                }
+            }
         case 2:
             self.tabBarController?.selectedIndex = 1
+            if let controllers = self.tabBarController?.viewControllers{
+                if let ctr = controllers[1].childViewControllers[0] as? CoursePageViewController {
+                    ctr.segmentIndex = 1
+                }
+            }
         case 3:
             self.tabBarController?.selectedIndex = 1
+            if let controllers = self.tabBarController?.viewControllers{
+                if let ctr = controllers[1].childViewControllers[0] as? CoursePageViewController {
+                    ctr.segmentIndex = 2
+                }
+            }
         case 4:
             self.tabBarController?.selectedIndex = 2
         default:

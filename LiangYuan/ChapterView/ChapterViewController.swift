@@ -39,7 +39,8 @@ class ChapterViewController: UIViewController {
     var timer: Timer!
     @IBOutlet weak var playerView: SNPlayerView!
     @IBOutlet weak var webView: UIWebView!
-
+    
+    var testWebView = UIWebView()
     // MARK:- Init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,11 @@ class ChapterViewController: UIViewController {
         }
 //        initData()
         self.playerView.delegate = self
+        
+        
+//        let url = URL(string: "http://gweb.online/")!
+//        let request = URLRequest(url: url)
+//        testWebView.loadRequest(request)
 
     }
     override func viewWillAppear(_ animated: Bool) {

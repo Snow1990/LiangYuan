@@ -73,7 +73,7 @@ struct Constants {
     static let ScreenRect = UIScreen.main.bounds
     static let Scale = ScreenRect.width/720
     static let NavScale: CGFloat = 44/96
-    static let Gap: CGFloat = 10 * Constants.Scale
+    static let Gap: CGFloat = 8 * Constants.Scale
 
     
 }

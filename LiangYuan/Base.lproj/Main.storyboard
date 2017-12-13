@@ -40,14 +40,10 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="jjS-W7-2p1"/>
-                    <connections>
-                        <segue destination="5No-FQ-xXv" kind="show" identifier="toChapterDetailSegue" id="2Qb-1l-Yh7"/>
-                        <segue destination="yyZ-2z-mgX" kind="show" identifier="toCourseDetailSegue" id="Pj5-uj-0mg"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtE-cE-7ZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1406" y="725"/>
+            <point key="canvasLocation" x="8009" y="505"/>
         </scene>
         <!--Ad Detail View Controller-->
         <scene sceneID="S15-AB-Vzs">
@@ -191,14 +187,10 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="24x-yc-9Dd"/>
-                    <connections>
-                        <segue destination="5No-FQ-xXv" kind="show" identifier="toChapterDetailSegue" id="hCa-qS-DSD"/>
-                        <segue destination="yyZ-2z-mgX" kind="show" identifier="toCourseDetailSegue" id="f8n-Sw-Nfk"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yat-Tf-Tkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="725"/>
+            <point key="canvasLocation" x="8902" y="505"/>
         </scene>
         <!--Teji View Controller-->
         <scene sceneID="D9M-Js-sYT">
@@ -237,7 +229,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rn7-Pi-mgi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3199" y="725"/>
+            <point key="canvasLocation" x="2540" y="725"/>
         </scene>
         <!--Zhuanqu View Controller-->
         <scene sceneID="rWV-pP-pZg">
@@ -270,8 +262,6 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="nPQ-9k-i1m"/>
                     <connections>
-                        <segue destination="qbh-ap-vFS" kind="show" identifier="toAlbumsDetailSegue" id="mz8-AK-ZMd"/>
-                        <segue destination="Y9D-rF-qfK" kind="show" identifier="toAlbumsMoreSegue" id="Jwf-Pc-U0K"/>
                         <segue destination="Uya-uT-qye" kind="show" identifier="toAlbumsMoreTableViewSegue" id="1ds-k8-baI"/>
                     </connections>
                 </collectionViewController>
@@ -347,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJU-jx-JWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5101.6000000000004" y="724.58770614692662"/>
+            <point key="canvasLocation" x="1079" y="725"/>
         </scene>
         <!--Zhuanqu More Table View Controller-->
         <scene sceneID="RwL-6j-rDZ">
@@ -379,7 +369,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOe-rR-2oV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3198" y="2468"/>
+            <point key="canvasLocation" x="4084" y="1582"/>
         </scene>
         <!--Zhuanqu Detail View Controller-->
         <scene sceneID="2b2-Ww-ja8">
@@ -412,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ieq-t5-X9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5101.6000000000004" y="1610.6446776611695"/>
+            <point key="canvasLocation" x="4084" y="2570"/>
         </scene>
         <!--Zhuanqu More View Controller-->
         <scene sceneID="fEz-3O-YDi">
@@ -443,13 +433,10 @@
                             <outlet property="delegate" destination="Y9D-rF-qfK" id="Zvq-XE-6ZM"/>
                         </connections>
                     </collectionView>
-                    <connections>
-                        <segue destination="qbh-ap-vFS" kind="show" identifier="toAlbumsDetailSegue" id="kf3-em-eNe"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ls6-RI-VKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4084" y="1611"/>
+            <point key="canvasLocation" x="6420" y="1100"/>
         </scene>
         <!--Zhuanqu More View Controller-->
         <scene sceneID="tla-LE-Pki">
@@ -467,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WwK-0a-ah4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6055" y="1761"/>
+            <point key="canvasLocation" x="7441" y="1651"/>
         </scene>
         <!--Home Page View Controller-->
         <scene sceneID="dRI-Pz-rkb">
@@ -539,14 +526,10 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="7Ik-NL-xYm"/>
-                    <connections>
-                        <segue destination="5No-FQ-xXv" kind="show" identifier="toChapterDetailSegue" id="PgB-BO-DtZ"/>
-                        <segue destination="yyZ-2z-mgX" kind="show" identifier="toCourseDetailSegue" id="aZF-6Q-0QC"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cc-ah-w9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="725"/>
+            <point key="canvasLocation" x="7153" y="505"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="REO-JB-fWa">
@@ -604,7 +587,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nek-cg-g7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="-80.50974512743629"/>
+            <point key="canvasLocation" x="7153" y="-300"/>
         </scene>
         <!--本科-->
         <scene sceneID="vQK-4g-7Oe">
@@ -623,7 +606,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMO-QF-qDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1407" y="-82"/>
+            <point key="canvasLocation" x="8009" y="-302"/>
         </scene>
         <!--进深-->
         <scene sceneID="B4l-pi-Hi5">
@@ -642,7 +625,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGC-Hu-esw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="-81"/>
+            <point key="canvasLocation" x="8902" y="-301"/>
         </scene>
         <!--特辑-->
         <scene sceneID="gfT-xW-Jm3">
@@ -661,7 +644,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81L-iT-lj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3199" y="-81"/>
+            <point key="canvasLocation" x="2540" y="-81"/>
         </scene>
         <!--专区-->
         <scene sceneID="UaJ-wB-VkW">
@@ -699,7 +682,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFE-fG-Sbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5102" y="-82"/>
+            <point key="canvasLocation" x="1079" y="-81"/>
         </scene>
     </scenes>
     <resources>
@@ -713,6 +696,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="zuK-2A-573"/>
         <segue reference="LsQ-66-xip"/>
-        <segue reference="Pj5-uj-0mg"/>
+        <segue reference="409-yX-G3j"/>
     </inferredMetricsTieBreakers>
 </document>

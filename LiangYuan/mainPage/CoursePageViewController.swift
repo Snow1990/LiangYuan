@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class CoursePageViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SNHomePageHeaderDelegate {
     
-    
+    var segmentIndex = 0
     var qihangCourseInfoArray = [CourseInfo]() {didSet{self.collectionView?.reloadData()}}
     var benkeCourseInfoArray = [CourseInfo]() {didSet{self.collectionView?.reloadData()}}
     var jinshenCourseInfoArray = [CourseInfo]() {didSet{self.collectionView?.reloadData()}}
@@ -34,7 +34,11 @@ class CoursePageViewController: UIViewController,UICollectionViewDelegate, UICol
         initData()
 //        timer=Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.initData), userInfo: nil, repeats: true)
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        segment.selectedSegmentIndex = segmentIndex
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

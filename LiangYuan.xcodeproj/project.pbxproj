@@ -12,6 +12,7 @@
 		870EAF811F96018900873304 /* TejiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870EAF801F96018900873304 /* TejiViewController.swift */; };
 		870EAF861F96053200873304 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870EAF851F96053200873304 /* CourseViewController.swift */; };
 		872221521F96EF1C00D31F14 /* NewsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872221511F96EF1C00D31F14 /* NewsInfo.swift */; };
+		8726E0BE1FD915DD00F6014F /* HomePageZhuanquCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8726E0BD1FD915DD00F6014F /* HomePageZhuanquCell.swift */; };
 		872C89911FC18187009B6B43 /* ZhuanquMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C89901FC18186009B6B43 /* ZhuanquMoreViewController.swift */; };
 		872D69311F905844009D5E0A /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872D69301F905844009D5E0A /* SideMenuTableViewCell.swift */; };
 		873002201FA7098C0013DD34 /* AdDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730021F1FA7098C0013DD34 /* AdDetailViewController.swift */; };
@@ -56,6 +57,7 @@
 		870EAF801F96018900873304 /* TejiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TejiViewController.swift; sourceTree = "<group>"; };
 		870EAF851F96053200873304 /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		872221511F96EF1C00D31F14 /* NewsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInfo.swift; sourceTree = "<group>"; };
+		8726E0BD1FD915DD00F6014F /* HomePageZhuanquCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageZhuanquCell.swift; sourceTree = "<group>"; };
 		872C89901FC18186009B6B43 /* ZhuanquMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZhuanquMoreViewController.swift; sourceTree = "<group>"; };
 		872D69301F905844009D5E0A /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		8730021F1FA7098C0013DD34 /* AdDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				8745E4F11F9598D4004E5CDA /* BaseCollectionViewController.swift */,
 				8745E4F51F95A5E9004E5CDA /* HomePageCollectionViewCell.swift */,
+				8726E0BD1FD915DD00F6014F /* HomePageZhuanquCell.swift */,
 				8745E4F71F95A897004E5CDA /* HomePageCollectionReusableHeader.swift */,
 				8745E4F91F95B6F4004E5CDA /* HomePageCollectionReusableFooter.swift */,
 			);
@@ -452,6 +455,7 @@
 				87DD47F61F904991005592B0 /* SnowSideMenu.swift in Sources */,
 				872D69311F905844009D5E0A /* SideMenuTableViewCell.swift in Sources */,
 				8759F06C1FC52749009B7EE2 /* ZhuanquCollectionViewCell.swift in Sources */,
+				8726E0BE1FD915DD00F6014F /* HomePageZhuanquCell.swift in Sources */,
 				87EEA8391F960B3A003638C2 /* HomePageViewController.swift in Sources */,
 				870EAF811F96018900873304 /* TejiViewController.swift in Sources */,
 				8759F0711FC542CD009B7EE2 /* ZhuanquMoreTableViewCell.swift in Sources */,
